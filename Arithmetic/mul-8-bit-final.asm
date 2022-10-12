@@ -1,0 +1,32 @@
+#ORG 7000
+LHLD 7501H
+XCHG
+LDA 7503H
+LXI H,0000H
+MVI C, 08H
+
+MAIN:
+	DAD H // H is zero for 1st case
+	RAL 
+	JNC NOCARRY
+	
+	DAD D	// Adding number in register
+NOCARRY: 
+	DCR C
+//	MOV B,A
+	//MOV A,H
+//	RAL
+//	MOV H,A
+//	MOV A,C
+//	CPI 00H
+	
+//	MOV A,B
+	JNZ MAIN
+	SHLD 7504
+	HLT
+	
+	
+	
+
+#ORG 7501H
+#DB FFH,00H,FFH
